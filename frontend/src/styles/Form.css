@@ -1,0 +1,87 @@
+.form-container {
+  min-height: calc(100vh - 60px);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 700px;
+}
+
+.form-card h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.request-form .form-group {
+  margin-bottom: 24px;
+}
+
+.request-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.request-form input,
+.request-form select,
+.request-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.request-form input:focus,
+.request-form select:focus,
+.request-form textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.help-text {
+  font-size: 13px;
+  color: #7f8c8d;
+  margin-top: 6px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.success-container {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-card {
+  background: white;
+  padding: 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.success-card h2 {
+  color: #28a745;
+  margin-bottom: 16px;
+}
