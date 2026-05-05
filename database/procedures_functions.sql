@@ -136,7 +136,6 @@ $$;
 -- SELECT 
 --     get_request_count('pending') AS pending_count,
 --     get_request_count('completed') AS completed_count;
-```
 
 ---
 

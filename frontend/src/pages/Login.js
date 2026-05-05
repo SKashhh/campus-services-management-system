@@ -24,50 +24,83 @@ const Login = () => {
     } else {
       setError(result.error);
     }
+
     setLoading(false);
   };
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <h1>Login</h1>
-        <p className="auth-subtitle">Campus Services Management System</p>
+      <div className="auth-wrapper">
 
-        {error && <div className="error-message">{error}</div>}
+        {/* LEFT PANEL */}
+        <div className="auth-left">
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Enter your email"
+          {/* ✅ LOGO STRIP */}
+          <div className="logo-strip">
+            <img
+              src="/thapar_logo.png"
+              alt="Thapar Logo"
+              className="auth-logo"
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Enter your password"
-            />
-          </div>
+          <h2 className="auth-title">
+            Campus Services <br /> Management System
+          </h2>
 
-          <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+          <p className="auth-desc">
+            Submit service requests, track progress, and manage campus operations
+            seamlessly across departments.
+          </p>
 
-        <p className="auth-footer">
-          Don't have an account? <Link to="/register">Register here</Link>
-        </p>
+          <ul className="auth-features">
+            <li>✔ Raise requests in seconds</li>
+            <li>✔ Track real-time status</li>
+            <li>✔ Department-wise handling</li>
+            <li>✔ Feedback & resolution support</li>
+          </ul>
+        </div>
+
+        {/* RIGHT PANEL */}
+        <div className="auth-card">
+          <h1>Login</h1>
+          <p className="auth-subtitle">Campus Services Portal</p>
+
+          {error && <div className="error-message">{error}</div>}
+
+          <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Enter your password"
+              />
+            </div>
+
+            <button type="submit" className="auth-button" disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
+          </form>
+
+          <p className="auth-footer">
+            Don't have an account? <Link to="/register">Register here</Link>
+          </p>
+        </div>
+
       </div>
     </div>
   );

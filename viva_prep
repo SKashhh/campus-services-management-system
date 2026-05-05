@@ -1,0 +1,183 @@
+1. Architecture
+
+“The architecture follows React as frontend,
+Node.js and Express as thin API layer, 
+and PostgreSQL as the single source of truth.”
+
+React UI
+   ↓
+Node.js + Express API
+   ↓
+PostgreSQL Database
+
+2. Core DBMS Concepts Used
+
+Primary Key
+“Primary key uniquely identifies every record in a table.”
+Example: user_id, complaint_id, department_id.
+
+Foreign Key
+“Foreign key connects two tables and maintains referential integrity.”
+
+Example: complaint table may contain user_id and department_id to link complaint with user and department.
+
+Constraints
+“Constraints prevent invalid data from entering the database.”
+
+Examples:
+
+NOT NULL: required fields
+CHECK: priority only low/medium/high
+UNIQUE: email unique
+FOREIGN KEY: valid references only
+
+README mentions 20+ integrity constraints.
+
+3. Why PostgreSQL is Important Here
+
+“PostgreSQL is not just storing data; it is enforcing rules, maintaining audit accountability, calculating resolution time, and supporting analytics.”
+
+This makes project DBMS-heavy, not just frontend-backend.
+
+4. Priority Tradeoff — Most Important Concept
+
+This is a very good viva point.
+
+Problem:
+
+Fully automated priority can misclassify.
+Fully manual priority can be misused.
+
+Your solution:
+
+“I chose user-declared priority with SLA differentiation and analytical monitoring. This gives users contextual fairness while still allowing the admin to monitor priority misuse.”
+
+Simple example:
+
+“A hostel water issue may feel high priority to a student, so the user declares priority. But if too many high-priority complaints come from one category/user, analytics can detect inflation.”
+
+5. SLA Explanation
+
+SLA = Service Level Agreement
+“SLA means expected resolution time for a complaint.”
+
+Example:
+
+High priority → resolve faster
+Medium priority → normal timeline
+Low priority → longer timeline
+
+Viva line:
+
+“Priority is not just a label; it is mapped to SLA-tiered resolution timelines.”
+
+6. Audit Logging
+
+Audit logging means:
+
+“Every important complaint transition is recorded — who changed it, when changed it, and what changed.”
+
+Example:
+
+Complaint status:
+open → assigned → in_progress → resolved → closed
+Whenever status changes, trigger inserts record into audit table.
+
+Viva line:
+
+“Audit logs provide accountability and make the system transparent.”
+README mentions automated audit logging using database triggers and lifecycle transitions.
+
+7. Triggers
+
+Trigger ka answer:
+
+“A trigger is a database object that automatically executes when an event like INSERT, UPDATE, or DELETE happens.”
+
+In your project:
+
+“I used PL/pgSQL triggers to automate audit logging and resolution-time calculation.”
+
+Example:
+
+When complaint status becomes resolved,
+database automatically calculates resolution time.
+
+8.Normalization / 3NF
+
+README says schema is normalized to 3NF.
+
+Viva answer:
+
+“The database is normalized to 3NF to reduce redundancy, avoid update anomalies, and keep data consistent.”
+
+Example:
+
+Instead of storing department name repeatedly in every complaint:
+
+Department table:
+department_id, department_name
+Complaint table:
+complaint_id, department_id
+
+This avoids repeated data.
+
+9.Roles
+
+There are 3 roles:
+
+Student
+Can raise complaints, select category and priority, track status.
+
+Staff
+Can view assigned complaints, update progress, resolve complaints.
+
+Admin
+Can monitor workload, SLA compliance, priority distribution, analytics.
+
+Viva line:
+“Role-based governance ensures every user has controlled access according to responsibility.”
+
+15.Security
+
+Project uses:
+JWT authentication
+bcrypt password hashing
+
+Viva answer:
+“Passwords are not stored directly. They are hashed using bcrypt. JWT is used for authenticated access after login.”
+
+16. ACID Transactions
+ACID ensures database reliability. For example, if complaint assignment and audit log insertion happen together, either both should happen or none should happen
+
+ACID:
+
+Atomicity: all or nothing
+Consistency: valid state
+Isolation: concurrent users don’t corrupt data
+Durability: committed data remains saved
+
+17. Student raises request
+        ↓
+requests table insert
+        ↓
+Trigger → log entry created
+
+Admin approves
+        ↓
+requests update
+        ↓
+Trigger → approved_at set + log
+
+Staff completes
+        ↓
+requests update
+        ↓
+Trigger →
+  completed_at set
+  resolution_hours calc
+  log update
+
+Student gives feedback
+        ↓
+Trigger checks → allowed only if completed

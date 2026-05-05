@@ -3,62 +3,76 @@
   padding: 40px 20px;
   display: flex;
   justify-content: center;
+
+  background: #f5f7fa;   /* dashboard theme match */
 }
 
+/* MAIN CARD */
 .form-card {
   background: white;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+  border: 1px solid #eef0f3;
   width: 100%;
-  max-width: 700px;
+  max-width: 720px;
 }
 
 .form-card h1 {
   color: #2c3e50;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  font-size: 28px;
 }
 
 .form-subtitle {
-  color: #7f8c8d;
-  margin-bottom: 30px;
+  color: #6b7280;
+  margin-bottom: 28px;
 }
 
+/* FORM */
 .request-form .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .request-form label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 6px;
+  font-weight: 700;
   color: #34495e;
+  font-size: 14px;
 }
 
+/* INPUTS */
 .request-form input,
 .request-form select,
 .request-form textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: 12px 14px;
+  border: 1px solid #d7dde5;
+  border-radius: 8px;
+  font-size: 15px;
   font-family: inherit;
+  background: #f9fafc;
+  transition: 0.2s ease;
 }
 
 .request-form input:focus,
 .request-form select:focus,
 .request-form textarea:focus {
   outline: none;
-  border-color: #4a90e2;
+  border-color: #b30000;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(179,0,0,0.08);
 }
 
+/* HELP TEXT */
 .help-text {
   font-size: 13px;
-  color: #7f8c8d;
+  color: #6b7280;
   margin-top: 6px;
 }
 
+/* BUTTONS */
 .form-actions {
   display: flex;
   gap: 12px;
@@ -66,22 +80,26 @@
   margin-top: 30px;
 }
 
+/* SUCCESS SCREEN */
 .success-container {
   min-height: calc(100vh - 60px);
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #f5f7fa;
 }
 
 .success-card {
   background: white;
   padding: 60px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
   text-align: center;
+  border: 1px solid #eef0f3;
 }
 
 .success-card h2 {
   color: #28a745;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  font-size: 24px;
 }

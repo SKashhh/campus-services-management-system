@@ -3,87 +3,192 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
+
+  background: linear-gradient(
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.55)
+    ),
+    url('../../public/bg.jpg');
+
+  background-size: cover;
+  background-position: center;
 }
 
-.auth-card {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/* MAIN BOX */
+.auth-wrapper {
+  display: flex;
+  width: 1100px;
+  max-width: 95%;
+  min-height: 580px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+}
+
+/* LEFT PANEL */
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #b30000, #7a0000);
+  color: white;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 🔥 LOGO STRIP */
+.logo-strip {
   width: 100%;
-  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 20px;   /* 🔥 height + width feel */
+  margin-bottom: 40px;
+  background: whitesmoke;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  max-width: 500px;   /* 🔥 control width */
+}
+
+.auth-logo {
+  width: 260px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+/* TEXT */
+.auth-title {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.auth-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+/* FEATURES */
+.auth-features {
+  list-style: none;
+  padding: 0;
+}
+
+.auth-features li {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* RIGHT PANEL */
+.auth-card {
+  flex: 1;
+  background: #ffffff;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .auth-card h1 {
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 8px;
   color: #2c3e50;
 }
 
 .auth-subtitle {
   color: #7f8c8d;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
+/* FORM */
 .auth-form .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .auth-form label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 600;
-  color: #34495e;
 }
 
-.auth-form input,
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #b30000;
+}
+
+/* BUTTON */
+.auth-button {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #b30000, #8c0000);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  transform: translateY(-1px);
+}
+
+/* FOOTER */
+.auth-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ERROR */
+.error-message {
+  background: #ffe6e6;
+  color: #b30000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid #b30000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .auth-wrapper {
+    flex-direction: column;
+  }
+}
+
 .auth-form select {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  font-size: 16px;
+  background: white;
 }
 
-.auth-form input:focus,
-.auth-form select:focus {
-  outline: none;
-  border-color: #4a90e2;
+.form-row {
+  display: flex;
+  gap: 16px;
 }
 
-.auth-button {
-  width: 100%;
-  padding: 14px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 10px;
+.form-row .form-group {
+  flex: 1;
 }
 
-.auth-button:hover {
-  background-color: #357abd;
+.register-wrapper {
+  min-height: 620px;
 }
 
-.auth-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.auth-footer {
-  margin-top: 20px;
-  text-align: center;
-  color: #7f8c8d;
-}
-
-.auth-footer a {
-  color: #4a90e2;
-  text-decoration: none;
-}
-
-.auth-footer a:hover {
-  text-decoration: underline;
+@media (max-width: 900px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
 }
